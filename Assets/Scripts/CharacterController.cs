@@ -6,12 +6,11 @@ public class CharacterController : MonoBehaviour
 {   
     public float movementSpeed = 5f;
 
-
     private Sprite defaultPlayerSprite;
     private Rigidbody2D RB;
     private SpriteRenderer SR;
     private Vector2 movement;
-
+    
     private GameObject deletedGameObject;
 
 
@@ -20,10 +19,10 @@ public class CharacterController : MonoBehaviour
     {
         this.SR = GetComponent<SpriteRenderer>();
         this.RB = this.GetComponent<Rigidbody2D>();
-
+        
         this.defaultPlayerSprite = this.SR.sprite;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
