@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using interfaces;
 public class CharacterController : MonoBehaviour
 {   
     public float movementSpeed = 5f;
@@ -32,13 +32,25 @@ public class CharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)){
             shapeshift();
         }
+        if (Input.GetKeyDown(KeyCode.E)){
+            interact();
+        }
     }
 
     void FixedUpdate()
     {
         this.RB.MovePosition(this.RB.position +  this.movement * this.movementSpeed * Time.fixedDeltaTime);
     }
+    void interact()
+    {
+         Collider2D collider =  Physics2D.OverlapCircle(transform.position, 0.2f, 1 << LayerMask.NameToLayer("ShiftingObjects"));
 
+        // If standing on an object, change to the other object
+        if (collider){
+            GameObject gameObject = collider.gameObject;
+            // gameObject.GetComponent<>();
+        }
+    }
     void shapeshift() {
         // Check if standing on an object
         Collider2D collider =  Physics2D.OverlapCircle(transform.position, 0.2f, 1 << LayerMask.NameToLayer("ShiftingObjects"));
