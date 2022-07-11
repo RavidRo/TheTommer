@@ -11,8 +11,8 @@ public class CandleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       this.turnedOn = true;
-       this.spriteRenderer = GetComponent<SpriteRenderer>();
+        this.turnedOn = true;
+        this.spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame

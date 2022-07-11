@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MovementController : MonoBehaviour
 {   
-    public float movementSpeed = 5f;
+    public float movementSpeed = 2f;
 
     private Animator animator;
     private Rigidbody2D rigidBody;
@@ -25,9 +25,6 @@ public class MovementController : MonoBehaviour
 
         this.animator.SetFloat("xSpeed", this.movement.x);
         this.animator.SetFloat("ySpeed", this.movement.y);
-
-        // print to console
-        print(this.movement);
         
         if (Input.GetKeyDown(KeyCode.E)){
             interact();
@@ -36,7 +33,7 @@ public class MovementController : MonoBehaviour
 
     void FixedUpdate()
     {
-        this.rigidBody.MovePosition(this.rigidBody.position +  this.movement * this.movementSpeed * Time.fixedDeltaTime);
+        this.rigidBody.MovePosition(this.rigidBody.position + this.movement * this.movementSpeed * Time.fixedDeltaTime);
     }
     void interact()
     {
