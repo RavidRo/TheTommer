@@ -21,8 +21,6 @@ public class FollowingCamera : MonoBehaviour
         Vector3 trackedObjectMovementDirection3D = Vector3.Normalize(new Vector3(trackedObjectMovement.x, trackedObjectMovement.y, 0));
         Vector2 trackedObjectMovementDirection = (Vector2)trackedObjectMovementDirection3D;
 
-        print(trackedObjectMovement);
-
         Vector2 newPosition = Vector2.Lerp(
             this.transform.position, 
             (Vector2)this.trackedObject.position + this.offset * trackedObjectMovementDirection, 
