@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4898357752991115022}
   - component: {fileID: 4898357752991115021}
   - component: {fileID: 4898357752991115023}
+  - component: {fileID: 581619778}
   m_Layer: 0
   m_Name: Tommer
   m_TagString: Untagged
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 997204323
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 2068532411, guid: a6e6871b9b58baf41b3a55864a1ab2d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -119,7 +120,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.015035987, y: 0}
@@ -150,3 +151,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+--- !u!95 &581619778
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4898357752991115127}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92aff7a5bbc76b442b2c604e42916c9d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
