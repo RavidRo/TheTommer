@@ -44,6 +44,9 @@ TagManager:
   - name: Floors
     uniqueID: 2619103919
     locked: 0
+  - name: Decorations
+    uniqueID: 2911021131
+    locked: 0
   - name: Interactables
     uniqueID: 3029419819
     locked: 0
