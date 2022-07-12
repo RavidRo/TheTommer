@@ -3,6 +3,11 @@ using System.Collections;
 namespace interfaces
 {
     public interface IAction{
-    void action();
+        void action();
+    }
+
+    public interface IDeathSubscriber
+    {
+        void OnDeath();
     }
 }
