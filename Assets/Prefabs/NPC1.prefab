@@ -127,7 +127,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 3.5
 --- !u!1 &4895925359620950598
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,9 +139,10 @@ GameObject:
   - component: {fileID: 4895925359620950585}
   - component: {fileID: 4895925359620950584}
   - component: {fileID: 4895925359620950599}
-  - component: {fileID: 4895925359620950586}
   - component: {fileID: 455663378}
   - component: {fileID: 455663377}
+  - component: {fileID: 4895925359620950586}
+  - component: {fileID: 2232165802838615246}
   m_Layer: 2
   m_Name: NPC1
   m_TagString: Untagged
@@ -237,21 +238,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4895925359620950586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4895925359620950598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ccd80536d35c5240ac805663b11bf61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4895925359620950599}
-  moveSpeed: 0.2
-  decisionTime: {x: 1, y: 4}
 --- !u!50 &455663378
 Rigidbody2D:
   serializedVersion: 4
@@ -299,3 +285,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.743196, y: 0.87159777}
   m_EdgeRadius: 0
+--- !u!114 &4895925359620950586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895925359620950598}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccd80536d35c5240ac805663b11bf61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPoints: []
+  animator: {fileID: 4895925359620950599}
+  moveSpeed: 0.2
+  decisionTime: {x: 1, y: 4}
+--- !u!114 &2232165802838615246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895925359620950598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf55832cc3e6e4439f28de80b6e53e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
