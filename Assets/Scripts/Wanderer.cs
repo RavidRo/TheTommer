@@ -5,7 +5,6 @@ using UnityEngine;
 public class Wanderer : MonoBehaviour
  
 {
-    public Transform[] patrolPoints;
 
     internal Transform thisTransform;
     public Animator animator;

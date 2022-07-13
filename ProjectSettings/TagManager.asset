@@ -57,3 +57,9 @@ TagManager:
   - name: Walls
     uniqueID: 1047890345
     locked: 0
+  - name: TopDecorationsLited
+    uniqueID: 3355069623
+    locked: 0
+  - name: TopDecorations
+    uniqueID: 2379706015
+    locked: 0
