@@ -127,7 +127,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 3
 --- !u!1 &4895925359620950598
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,4 +322,4 @@ MonoBehaviour:
   meanWaitingTime: 3
   waitingTimeRandomVariation: 1
   waiting: 0
-  animator: {fileID: 0}
+  animator: {fileID: 4895925359620950599}

@@ -9,7 +9,13 @@ public class MovementController : MonoBehaviour, IDeathSubscriber
     private Animator animator;
     private Rigidbody2D rigidBody;
     private Vector2 movement;
-    private bool freeze;
+
+    [SerializeField] float deathAnimationTime = 3f;
+    [SerializeField] float spawnAnimationTime = 3f;
+    private bool dead = false;
+    private float animationTimerCount = 0;
+    private Vector3 initialSpawn;
+    private bool spawning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +23,35 @@ public class MovementController : MonoBehaviour, IDeathSubscriber
         this.rigidBody = this.GetComponent<Rigidbody2D>();
         this.animator = this.GetComponent<Animator>();
 
-        this.freeze = false;
+        this.initialSpawn = this.transform.position;
     }
     
     // Update is called once per frame
     void Update()
     {
-        if (this.freeze) return;
+        if (this.dead)
+        {
+            this.animationTimerCount += Time.deltaTime;
+            if(this.animationTimerCount >= this.deathAnimationTime)
+            {
+                this.animationTimerCount = 0;
+                this.dead = false;
+                this.spawning = true;
+                this.transform.position = this.initialSpawn;
+                this.animator.SetTrigger("spawn");
+            }
+            return;
+        }
+        if(this.spawning)
+        {
+            this.animationTimerCount += Time.deltaTime;
+            if (this.animationTimerCount >= this.spawnAnimationTime)
+            {
+                this.animationTimerCount = 0;
+                this.spawning = false;
+            }
+            return;
+        }
 
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
@@ -38,7 +66,7 @@ public class MovementController : MonoBehaviour, IDeathSubscriber
 
     void FixedUpdate()
     {
-        if (this.freeze) return;
+        if (this.dead) return;
 
         this.rigidBody.MovePosition(this.rigidBody.position + this.movement * this.movementSpeed * Time.fixedDeltaTime);
     }
@@ -55,7 +83,9 @@ public class MovementController : MonoBehaviour, IDeathSubscriber
 
     public void OnDeath()
     {
-        this.freeze = true;
+        this.dead = true;
+        this.animator.SetTrigger("dead");
+
         movement.x = 0;
         movement.y = 0;
     }

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &895650628
 Transform:
   m_ObjectHideFlags: 0
@@ -236,7 +236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad2f5bfc1770a348b3614ef3612b494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 2
+  deathAnimationTime: 2
+  spawnAnimationTime: 0.5
 --- !u!95 &581619778
 Animator:
   serializedVersion: 4
@@ -270,9 +272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementController: {fileID: 4898357752991115023}
-  deathRadius: 1
-  warningRadius: 1.5
   warningIcon: {fileID: 895650627}
   invincible: 0
   warningColorNear: {r: 1, g: 0, b: 0, a: 1}
-  warningColorFar: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  warningColorFar: {r: 0.9528302, g: 0.9202407, b: 0.5438323, a: 1}
+  warningDistance: 0.5

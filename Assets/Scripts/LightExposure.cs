@@ -7,23 +7,44 @@ public class LightExposure : MonoBehaviour
 {
 
     [SerializeField] MovementController movementController;
-    [SerializeField] float deathRadius = 1.2f;
-    [SerializeField] float warningRadius = 1.75f;
     [SerializeField] GameObject warningIcon;
     [SerializeField] bool invincible = false;
 
-    [SerializeField]  Color warningColorNear = Color.red;
-    [SerializeField]  Color warningColorFar = Color.yellow;
+    [SerializeField] Color warningColorNear = Color.red;
+    [SerializeField] Color warningColorFar = Color.yellow;
 
-    private Animator animator;
-    private List<GameObject> lightSources = new();
+    [SerializeField] float warningDistance = 1f;
+    private class LightSource
+    {
+        public int id; 
+        public GameObject lightSource;
+        public float warningRadius;
+        public float deathRadius;
+
+        public LightSource(GameObject lightSource, Vector2 currentLocation, float warningDistance)
+        {
+            this.id = lightSource.GetInstanceID();
+            this.lightSource = lightSource;
+            this.warningRadius = Vector2.Distance(lightSource.transform.position, currentLocation);
+            this.deathRadius = this.warningRadius - warningDistance;
+        }
+
+        public float RangeToDeath(Vector2 position)
+        {
+            Vector2 sourcePosition = this.lightSource.transform.position;
+            float rawDistance = Vector2.Distance(position, sourcePosition);
+            float distance = rawDistance - this.deathRadius;
+
+            return distance;
+        }
+    }
+
+    private List<LightSource> lightSources = new();
     private SpriteRenderer warningIconSprite;
-    private bool dead = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.animator = this.GetComponent<Animator>();
         if(this.warningIcon != null)
         {
             this.warningIconSprite = this.warningIcon.GetComponent<SpriteRenderer>();
@@ -32,22 +53,18 @@ public class LightExposure : MonoBehaviour
 
     void Update()
     {
-        float minDistance = this.CalculateMinDistance();
-
-        if (minDistance <= this.deathRadius)
+        // print(this.lightSources.Count);
+        if(this.lightSources.Count == 0)
         {
-            this.Die();
+            this.warningIcon.SetActive(false);
             return;
         }
 
-        bool inWarningRadius = minDistance < this.warningRadius;
-        if (inWarningRadius)
+        float distance = this.CalculateMinDistanceToSource();
+        if(distance < 0)
         {
-            SetWarningColor(minDistance);
-        }
-        else
-        {
-            this.warningIcon.SetActive(false);
+            this.Die();
+            return;
         }
     }
 
@@ -59,29 +76,22 @@ public class LightExposure : MonoBehaviour
 
     void SetWarningColor(float distance)
     {
-        if (!dead)
-        {
-            this.warningIcon.SetActive(true);
+        this.warningIcon.SetActive(true);
 
-            //Convert 0 and 200 distance range to 0f and 1f range
-            float lerp = this.MapValue(distance, this.deathRadius, this.warningRadius, 0f, 1f);
-            //Lerp Color between near and far color
-            Color lerpColor = Color.Lerp(this.warningColorNear, this.warningColorFar, lerp);
+        //Convert 0 and 200 distance range to 0f and 1f range
+        float lerp = this.MapValue(distance, 0, this.warningDistance, 0f, 1f);
+        //Lerp Color between near and far color
+        Color lerpColor = Color.Lerp(this.warningColorNear, this.warningColorFar, lerp);
 
-            // this.warningIconSprite.material.color = lerpColor;
-            this.warningIconSprite.color = lerpColor;
-        }
+        // this.warningIconSprite.material.color = lerpColor;
+        this.warningIconSprite.color = lerpColor;
     }
 
     void Die()
     {
         if (!invincible)
         {
-            this.dead = true;
-            if (this.animator != null)
-            {
-                this.animator.SetTrigger("dead");
-            }
+            this.lightSources.Clear();
             if (this.movementController != null)
             {
                 this.movementController.OnDeath();
@@ -94,16 +104,25 @@ public class LightExposure : MonoBehaviour
     }
 
     // Return the distance to the closest light source
-    float CalculateMinDistance()
+    float CalculateMinDistanceToSource()
     {
         float min = int.MaxValue;
-        foreach (GameObject source in this.lightSources)
+        this.warningIcon.SetActive(false);
+
+        foreach (LightSource source in this.lightSources)
         {
             // If there is not something in between
-            if (!Physics2D.Linecast(this.transform.position, source.transform.position))
+            Vector2 sourcePosition = source.lightSource.transform.position;
+            if (!Physics2D.Linecast(this.transform.position, sourcePosition))
             {
-                float distance = Vector2.Distance(this.transform.position, source.transform.position);
-                min = Mathf.Min(min, distance);
+                float rawDistance = Vector2.Distance(this.transform.position, sourcePosition);
+                float distance = source.RangeToDeath(this.transform.position);
+
+                if(distance < min)
+                {
+                    SetWarningColor(distance);
+                    min = distance;
+                }
             }
         }
         return min;
@@ -113,11 +132,11 @@ public class LightExposure : MonoBehaviour
     {
         if (!c.gameObject.CompareTag("LightExposure")) return;
 
-        this.lightSources.Add(c.gameObject);
+        this.lightSources.Add(new LightSource(c.gameObject, this.transform.position, this.warningDistance));
     }
 
-    void OnTriggerExit(Collider c) //change to 2d for 2d
+    void OnTriggerExit2D(Collider2D c) //change to 2d for 2d
     {
-        this.lightSources.Remove(c.gameObject);
+        this.lightSources.RemoveAll(s => s.id == c.gameObject.GetInstanceID());
     }
 }
