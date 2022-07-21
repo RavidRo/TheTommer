@@ -94,12 +94,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4898357752991115121}
   - component: {fileID: 4898357752991115120}
-  - component: {fileID: 4898357752991115123}
   - component: {fileID: 4898357752991115022}
-  - component: {fileID: 4898357752991115021}
-  - component: {fileID: 4898357752991115023}
   - component: {fileID: 581619778}
-  - component: {fileID: 1799046620}
+  - component: {fileID: 5597397363600725090}
+  - component: {fileID: 359952426783053172}
   m_Layer: 2
   m_Name: Tommer
   m_TagString: Untagged
@@ -175,27 +173,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &4898357752991115123
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4898357752991115127}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!70 &4898357752991115022
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -212,33 +189,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.015035987, y: 0}
   m_Size: {x: 0.8977568, y: 1.060143}
   m_Direction: 0
---- !u!114 &4898357752991115021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4898357752991115127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90447f1f8ae5f8e4d96dcc45e400ddd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4898357752991115023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4898357752991115127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad2f5bfc1770a348b3614ef3612b494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 2
-  deathAnimationTime: 2
-  spawnAnimationTime: 0.5
 --- !u!95 &581619778
 Animator:
   serializedVersion: 4
@@ -259,7 +209,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1799046620
+--- !u!114 &5597397363600725090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,12 +218,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4898357752991115127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa2567eecaeb36498520d5a31e57241, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fc9330121f176e49b835713f0a0d1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementController: {fileID: 4898357752991115023}
-  warningIcon: {fileID: 895650627}
-  invincible: 0
-  warningColorNear: {r: 1, g: 0, b: 0, a: 1}
-  warningColorFar: {r: 0.9528302, g: 0.9202407, b: 0.5438323, a: 1}
-  warningDistance: 0.5
+--- !u!114 &359952426783053172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4898357752991115127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbfd212d443eca449ec595b6d11a5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathAnimationTime: 3
+  spawnAnimationTime: 3

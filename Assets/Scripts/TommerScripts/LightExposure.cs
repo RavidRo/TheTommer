@@ -6,7 +6,7 @@ using interfaces;
 public class LightExposure : MonoBehaviour
 {
 
-    [SerializeField] MovementController movementController;
+    [SerializeField] DeathController deathController;
     [SerializeField] GameObject warningIcon;
     [SerializeField] bool invincible = false;
 
@@ -92,9 +92,9 @@ public class LightExposure : MonoBehaviour
         if (!invincible)
         {
             this.lightSources.Clear();
-            if (this.movementController != null)
+            if (this.deathController != null)
             {
-                this.movementController.OnDeath();
+                this.deathController.OnDeath();
             }
             if(this.warningIcon != null)
             {
@@ -130,7 +130,7 @@ public class LightExposure : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c) //change to 2d for 2d
     {
-        if (!c.gameObject.CompareTag("LightExposure")) return;
+        if (!c.gameObject.CompareTag("LightExposure") || DeathController.inAnimation) return;
 
         this.lightSources.Add(new LightSource(c.gameObject, this.transform.position, this.warningDistance));
     }
