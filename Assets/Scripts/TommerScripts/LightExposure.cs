@@ -6,7 +6,7 @@ using interfaces;
 public class LightExposure : MonoBehaviour
 {
 
-    [SerializeField] MovementController movementController;
+    [SerializeField] DeathController deathController;
     [SerializeField] GameObject warningIcon;
     [SerializeField] bool invincible = false;
 
@@ -16,7 +16,7 @@ public class LightExposure : MonoBehaviour
     [SerializeField] float warningDistance = 1f;
     private class LightSource
     {
-        public int id; 
+        public int id;
         public GameObject lightSource;
         public float warningRadius;
         public float deathRadius;
@@ -45,7 +45,7 @@ public class LightExposure : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(this.warningIcon != null)
+        if (this.warningIcon != null)
         {
             this.warningIconSprite = this.warningIcon.GetComponent<SpriteRenderer>();
         }
@@ -54,14 +54,14 @@ public class LightExposure : MonoBehaviour
     void Update()
     {
         // print(this.lightSources.Count);
-        if(this.lightSources.Count == 0)
+        if (this.lightSources.Count == 0)
         {
             this.warningIcon.SetActive(false);
             return;
         }
 
         float distance = this.CalculateMinDistanceToSource();
-        if(distance < 0)
+        if (distance < 0)
         {
             this.Die();
             return;
@@ -92,11 +92,11 @@ public class LightExposure : MonoBehaviour
         if (!invincible)
         {
             this.lightSources.Clear();
-            if (this.movementController != null)
+            if (this.deathController != null)
             {
-                this.movementController.OnDeath();
+                this.deathController.OnDeath();
             }
-            if(this.warningIcon != null)
+            if (this.warningIcon != null)
             {
                 this.warningIcon.SetActive(false);
             }
@@ -118,7 +118,7 @@ public class LightExposure : MonoBehaviour
                 float rawDistance = Vector2.Distance(this.transform.position, sourcePosition);
                 float distance = source.RangeToDeath(this.transform.position);
 
-                if(distance < min)
+                if (distance < min)
                 {
                     SetWarningColor(distance);
                     min = distance;
@@ -130,7 +130,7 @@ public class LightExposure : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c) //change to 2d for 2d
     {
-        if (!c.gameObject.CompareTag("LightExposure")) return;
+        if (!c.gameObject.CompareTag("LightExposure") || DeathController.inAnimation) return;
 
         this.lightSources.Add(new LightSource(c.gameObject, this.transform.position, this.warningDistance));
     }
