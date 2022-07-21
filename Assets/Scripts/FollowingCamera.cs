@@ -11,6 +11,15 @@ public class FollowingCamera : MonoBehaviour
 
     private Vector2 trackedObjectOldPosition;
 
+    void Start()
+    {
+        this.transform.position = new Vector3(
+            this.trackedObject.position.x,
+            this.trackedObject.position.y,
+            this.transform.position.z
+        );
+    }
+    
 
     void Update()
     {

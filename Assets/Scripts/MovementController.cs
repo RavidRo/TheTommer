@@ -17,6 +17,8 @@ public class MovementController : MonoBehaviour, IDeathSubscriber
     private Vector3 initialSpawn;
     private bool spawning = false;
 
+    public bool freeze = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,9 @@ public class MovementController : MonoBehaviour, IDeathSubscriber
             return;
         }
 
+        if (this.freeze) return;
+
+
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
@@ -66,7 +71,7 @@ public class MovementController : MonoBehaviour, IDeathSubscriber
 
     void FixedUpdate()
     {
-        if (this.dead) return;
+        if (this.dead || this.freeze) return;
 
         this.rigidBody.MovePosition(this.rigidBody.position + this.movement * this.movementSpeed * Time.fixedDeltaTime);
     }
@@ -88,5 +93,15 @@ public class MovementController : MonoBehaviour, IDeathSubscriber
 
         movement.x = 0;
         movement.y = 0;
+    }
+
+    public void Unfreeze()
+    {
+        this.freeze = false;
+    }
+
+    public void Freeze()
+    {
+        this.freeze = true;
     }
 }
