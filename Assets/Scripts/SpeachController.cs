@@ -9,6 +9,7 @@ public class SpeachController : MonoBehaviour
     [SerializeField] TextMeshProUGUI speachText;
     [SerializeField] string[] sentences;
     [SerializeField] GameObject continueButton;
+    [SerializeField] AudioSource audioSource;
 
     private int sentenceIndex = 0;
 
@@ -19,12 +20,13 @@ public class SpeachController : MonoBehaviour
 
     private IEnumerator TypeSentence()
     {
+        audioSource.Play();
         foreach (char letter in sentences[sentenceIndex].ToCharArray())
         {
             speachText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
-        
+        audioSource.Stop();
         continueButton.SetActive(true);
     }
 
