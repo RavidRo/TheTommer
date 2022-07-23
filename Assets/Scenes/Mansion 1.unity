@@ -528,10 +528,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 470810682, guid: f7df94898d35a7f42bbb7e8dd6215262, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 470810682, guid: f7df94898d35a7f42bbb7e8dd6215262, type: 3}
       propertyPath: warningIcon
       value: 
       objectReference: {fileID: 1995187788}
@@ -541,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 2361452825398527423}
     - target: {fileID: 8789971099168152413, guid: f7df94898d35a7f42bbb7e8dd6215262, type: 3}
       propertyPath: m_Name
-      value: Interactable
+      value: WateringCan
       objectReference: {fileID: 0}
     - target: {fileID: 8789971099168152415, guid: f7df94898d35a7f42bbb7e8dd6215262, type: 3}
       propertyPath: m_RootOrder
@@ -9625,10 +9621,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 552729772, guid: 5dfaf925cfe5ce34a8829ab5b0793709, type: 3}
-      propertyPath: m_Radius
-      value: 3.3
-      objectReference: {fileID: 0}
     - target: {fileID: 2232165802838615246, guid: 5dfaf925cfe5ce34a8829ab5b0793709, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
