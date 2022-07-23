@@ -5,26 +5,30 @@ using UnityEngine;
 public class DeathController : MonoBehaviour, IDeathSubscriber
 {
     private Animator animator;
-    [SerializeField] float deathAnimationTime = 3f;
-    [SerializeField] float spawnAnimationTime = 3f;
-    private bool dead = false;
+    [SerializeField] GameObject tommer;
+    [SerializeField] PlayerController player;
+    [SerializeField] float deathAnimationTime = 1.5f;
+    [SerializeField] float spawnAnimationTime = 1f;
     private float animationTimerCount = 0;
     private Vector3 initialSpawn;
     private bool spawning = false;
     public static bool inAnimation = false;
+    private bool dead = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.animator = this.GetComponent<Animator>();
+        this.animator = this.tommer.GetComponent<Animator>();
         this.initialSpawn = this.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        inAnimation = false;
         if (this.dead)
         {
+            inAnimation = true;
             this.animationTimerCount += Time.deltaTime;
             if (this.animationTimerCount >= this.deathAnimationTime)
             {
@@ -32,13 +36,14 @@ public class DeathController : MonoBehaviour, IDeathSubscriber
                 this.dead = false;
                 this.spawning = true;
                 // this.transform.position = this.initialSpawn;
-                this.transform.parent.transform.position = this.initialSpawn;
+                this.transform.position = this.initialSpawn;
                 this.animator.SetTrigger("spawn");
             }
             return;
         }
         if (this.spawning)
         {
+            inAnimation = true;
             this.animationTimerCount += Time.deltaTime;
             if (this.animationTimerCount >= this.spawnAnimationTime)
             {
@@ -52,6 +57,7 @@ public class DeathController : MonoBehaviour, IDeathSubscriber
 
     public void OnDeath()
     {
+        this.player.unpossess();
         this.dead = true;
         this.animator.SetTrigger("dead");
     }

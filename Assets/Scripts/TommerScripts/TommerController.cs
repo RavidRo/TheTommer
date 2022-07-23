@@ -28,4 +28,9 @@ public class TommerController : MonoBehaviour, IPossessable
         this.animator.SetFloat("xSpeed", x);
         this.animator.SetFloat("ySpeed", y);
     }
+    public void onPossession()
+    {
+    }
+    public void onUnpossession(){
+	}
 }

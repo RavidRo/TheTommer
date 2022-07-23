@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8789971099168152415}
   - component: {fileID: 8789971099168152412}
   - component: {fileID: 8789971099168152414}
+  - component: {fileID: 470810677}
+  - component: {fileID: 470810682}
   m_Layer: 3
   m_Name: Interactable
   m_TagString: Untagged
@@ -27,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8789971099168152413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.002, y: 0.525, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1265547477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8dfb7eb4494cbe14eabf0fda5056d27d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0033002496, y: 0.06600529}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,5 +111,35 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4, y: 1.2}
+  m_Size: {x: 1.2217859, y: 1.0679895}
   m_EdgeRadius: 0
+--- !u!114 &470810677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789971099168152413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd83b75574bf524199d7051f2be359a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &470810682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789971099168152413}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa2567eecaeb36498520d5a31e57241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathController: {fileID: 0}
+  warningIcon: {fileID: 0}
+  invincible: 0
+  warningColorNear: {r: 1, g: 0, b: 0, a: 1}
+  warningColorFar: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  warningDistance: 1

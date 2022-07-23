@@ -25,14 +25,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(DeathController.inAnimation) return;
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("E");
             interact();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("space");
             if (this.possessing == null) possess();
             else unpossess();
         }
@@ -44,12 +44,15 @@ public class PlayerController : MonoBehaviour
         else this.Tommer.GetComponent<TommerController>().interact();
     }
 
-    void unpossess()
+    public void unpossess()
     {
-        this.possessing.transform.SetParent(null);
-        this.possessing.GetComponent<Collider2D>().isTrigger = true;
-        this.possessing = null;
-        this.Tommer.SetActive(true);
+        if(this.possessing != null){
+            this.possessing.transform.SetParent(null);
+            this.possessing.GetComponent<Collider2D>().isTrigger = true;
+            this.possessing.GetComponent<IPossessable>().onUnpossession();
+            this.possessing = null;
+            this.Tommer.SetActive(true);
+        }
     }
 
     void possess()
@@ -61,9 +64,10 @@ public class PlayerController : MonoBehaviour
             GameObject possessable = collider.gameObject;
             this.possessing = possessable;
             this.Tommer.SetActive(false);
-            this.possessing.transform.position = this.gameObject.transform.position;
+            this.gameObject.transform.position = this.possessing.transform.position;
             this.possessing.transform.SetParent(this.gameObject.transform);
             this.possessing.GetComponent<Collider2D>().isTrigger = false;
+            this.possessing.GetComponent<IPossessable>().onPossession();
         }
     }
 

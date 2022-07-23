@@ -7,6 +7,8 @@ namespace interfaces
     {
         void interact();
         void movementAnimation(float x, float y);
+        void onPossession();
+        void onUnpossession();
     }
 
     public interface IDeathSubscriber

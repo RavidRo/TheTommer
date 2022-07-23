@@ -607,7 +607,7 @@ RectTransform:
   - {fileID: 1659235839}
   - {fileID: 1099670872}
   m_Father: {fileID: 1744255369675930757}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -705,6 +705,7 @@ GameObject:
   - component: {fileID: 1199305911047155994}
   - component: {fileID: 7739490267086380467}
   - component: {fileID: 2361452825398527414}
+  - component: {fileID: 2361452825398527423}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -724,6 +725,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3478576841399972613}
   - {fileID: 2361452824444495061}
   - {fileID: 1896030487}
   m_Father: {fileID: 0}
@@ -789,6 +791,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2361452825398527423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800117040221024185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64da582009253b542bf5555b4dfc1952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tommer: {fileID: 2361452824257032394}
+  player: {fileID: 3813815431443424366}
+  deathAnimationTime: 1.5
+  spawnAnimationTime: 1
 --- !u!1 &2361452824257032394
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +821,6 @@ GameObject:
   - component: {fileID: 4146166013203763461}
   - component: {fileID: 8778511826041280745}
   - component: {fileID: 4009602006623450048}
-  - component: {fileID: 9044022883354897289}
   m_Layer: 2
   m_Name: Tommer
   m_TagString: Untagged
@@ -822,10 +839,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3478576841399972613}
+  m_Children: []
   m_Father: {fileID: 1744255369675930757}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5045746640903232301
 SpriteRenderer:
@@ -927,7 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa2567eecaeb36498520d5a31e57241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathController: {fileID: 9044022883354897289}
+  deathController: {fileID: 2361452825398527423}
   warningIcon: {fileID: 3387593230672432132}
   invincible: 0
   warningColorNear: {r: 1, g: 0, b: 0, a: 1}
@@ -945,20 +961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a55f7e487c6074cb9810f226cda406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9044022883354897289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2361452824257032394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64da582009253b542bf5555b4dfc1952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathAnimationTime: 3
-  spawnAnimationTime: 3
 --- !u!1 &3387593230672432132
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,12 +985,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3387593230672432132}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.64, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2361452824444495061}
+  m_Father: {fileID: 1744255369675930757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5552509028039918467

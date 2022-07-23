@@ -53,7 +53,6 @@ public class LightExposure : MonoBehaviour
 
     void Update()
     {
-        // print(this.lightSources.Count);
         if (this.lightSources.Count == 0)
         {
             this.warningIcon.SetActive(false);
@@ -113,11 +112,10 @@ public class LightExposure : MonoBehaviour
         {
             // If there is not something in between
             Vector2 sourcePosition = source.lightSource.transform.position;
-            if (!Physics2D.Linecast(this.transform.position, sourcePosition))
+            if (!Physics2D.Linecast(this.transform.position, sourcePosition, LayerMask.GetMask("Walls")))
             {
                 float rawDistance = Vector2.Distance(this.transform.position, sourcePosition);
                 float distance = source.RangeToDeath(this.transform.position);
-
                 if (distance < min)
                 {
                     SetWarningColor(distance);
