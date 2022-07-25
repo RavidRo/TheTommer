@@ -25,7 +25,7 @@ public class Possession : MonoBehaviour
             GameObject possessable = collider.gameObject;
             this.possessing = possessable;
             // this.gameObject.SetActive(false);
-            this.possessing.transform.position = this.gameObject.transform.position;
+            this.gameObject.transform.position = this.possessing.transform.position;
             this.possessing.transform.SetParent(this.gameObject.transform);
             this.possessing.GetComponent<Collider2D>().isTrigger = false;
         }

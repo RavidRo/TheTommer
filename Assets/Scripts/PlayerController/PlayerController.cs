@@ -2,25 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using interfaces;
+
+[RequireComponent(typeof(MovementController))]
 public class PlayerController : MonoBehaviour
 {
-    public GameObject Tommer;
-    private GameObject possessing;
-
+    [SerializeField] private TommerController Tommer;
+    private IPossessable possessing;
+    private MovementController movementController;
 
     // public  Sprite
     // Start is called before the first frame update
     void Start()
     {
+        this.movementController = this.GetComponent<MovementController>();
         this.Tommer.transform.position = this.gameObject.transform.position;
         this.Tommer.transform.SetParent(this.transform);
     }
 
     void FixedUpdate()
     {
-        Vector2 movement = this.GetComponent<MovementController>().getMovement();
-        if (this.possessing != null) this.possessing.GetComponent<IPossessable>().movementAnimation(movement.x, movement.y);
-        else this.Tommer.GetComponent<TommerController>().movementAnimation(movement.x, movement.y);
+        Vector2 movement = this.movementController.getMovement();
+        if (this.possessing != null) this.possessing.MovementAnimation(movement.x, movement.y);
+        else this.Tommer.MovementAnimation(movement.x, movement.y);
     }
     // Update is called once per frame
     void Update()
@@ -40,8 +43,8 @@ public class PlayerController : MonoBehaviour
 
     void interact()
     {
-        if (this.possessing != null) this.possessing.GetComponent<IPossessable>().interact();
-        else this.Tommer.GetComponent<TommerController>().interact();
+        if (this.possessing != null) this.possessing.Interact();
+        else this.Tommer.Interact();
     }
 
     public void unpossess()
@@ -49,9 +52,10 @@ public class PlayerController : MonoBehaviour
         if(this.possessing != null){
             this.possessing.transform.SetParent(null);
             this.possessing.GetComponent<Collider2D>().isTrigger = true;
-            this.possessing.GetComponent<IPossessable>().onUnpossession();
+            this.movementController.Unfreeze();
+            this.possessing.OnUnpossession();
             this.possessing = null;
-            this.Tommer.SetActive(true);
+            this.Tommer.gameObject.SetActive(true);
         }
     }
 
@@ -61,13 +65,25 @@ public class PlayerController : MonoBehaviour
         // If standing on an object, change to the other object
         if (collider)
         {
-            GameObject possessable = collider.gameObject;
-            this.possessing = possessable;
-            this.Tommer.SetActive(false);
+            // Save new object
+            this.possessing = collider.gameObject.GetComponent<IPossessable>();
+            IPossessable possableComponent = possessing.GetComponent<IPossessable>();
+
+            // Replace Tommer
+            this.Tommer.gameObject.SetActive(false);
             this.gameObject.transform.position = this.possessing.transform.position;
             this.possessing.transform.SetParent(this.gameObject.transform);
-            this.possessing.GetComponent<Collider2D>().isTrigger = false;
-            this.possessing.GetComponent<IPossessable>().onPossession();
+
+            // Fire events
+            if (possableComponent.CanCollide)
+            {
+                this.possessing.GetComponent<Collider2D>().isTrigger = false;
+            }
+            if (!possableComponent.CanMove)
+            {
+                this.movementController.Freeze();
+            }
+            this.possessing.GetComponent<IPossessable>().OnPossession();
         }
     }
 

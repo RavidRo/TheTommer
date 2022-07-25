@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using interfaces;
-public class TommerController : MonoBehaviour, IPossessable
+public class TommerController : IPossessable
 {
     // public  Sprite
     // Start is called before the first frame update
@@ -16,21 +16,9 @@ public class TommerController : MonoBehaviour, IPossessable
         this.animator = this.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-
-
-    public void interact()
-    {
-        Debug.Log("Tommer interact");
-    }
-    public void movementAnimation(float x, float y)
+    public override void MovementAnimation(float x, float y)
     {
         this.animator.SetFloat("xSpeed", x);
         this.animator.SetFloat("ySpeed", y);
     }
-    public void onPossession()
-    {
-    }
-    public void onUnpossession(){
-	}
 }

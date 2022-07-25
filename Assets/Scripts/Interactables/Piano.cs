@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using interfaces;
-public class Piano : MonoBehaviour, IPossessable
+public class Piano : IPossessable
 {
 	[SerializeField] MovementController movementController;
 	private AudioSource audioSource;
@@ -11,27 +11,12 @@ public class Piano : MonoBehaviour, IPossessable
     void Start()
     {
 		this.audioSource = this.GetComponent<AudioSource>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-	public void onPossession(){
-		movementController.Freeze();
+		this.canCollide = false;
+		this.canMove = false;
 	}
 
-	public void onUnpossession(){
-		movementController.Unfreeze();
-	}
-
-    public void movementAnimation(float x, float y)
-    {
-        // Debug.Log("Water can movement animation");
-    }
-    public void interact()
+	public override void Interact()
     {
 		this.audioSource.Play();
     }
