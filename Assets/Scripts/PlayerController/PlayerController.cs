@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour
     private IPossessable possessing;
     private MovementController movementController;
 
-    // public  Sprite
-    // Start is called before the first frame update
     void Start()
     {
         this.movementController = this.GetComponent<MovementController>();
@@ -25,7 +23,7 @@ public class PlayerController : MonoBehaviour
         if (this.possessing != null) this.possessing.MovementAnimation(movement.x, movement.y);
         else this.Tommer.MovementAnimation(movement.x, movement.y);
     }
-    // Update is called once per frame
+
     void Update()
     {
         if(DeathController.inAnimation) return;

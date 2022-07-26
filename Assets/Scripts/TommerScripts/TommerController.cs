@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using interfaces;
+
+[RequireComponent(typeof(Animator))]
 public class TommerController : IPossessable
 {
-    // public  Sprite
-    // Start is called before the first frame update
-
     private Animator animator;
-    private Rigidbody2D rigidBody;
+
+    private bool endingScene = false;
 
     void Start()
     {
-        this.rigidBody = this.GetComponent<Rigidbody2D>();
         this.animator = this.GetComponent<Animator>();
     }
 
@@ -20,5 +19,19 @@ public class TommerController : IPossessable
     {
         this.animator.SetFloat("xSpeed", x);
         this.animator.SetFloat("ySpeed", y);
+    }
+
+    public void Update()
+    {
+        if (this.endingScene)
+        {
+            this.transform.parent.transform.position = this.transform.position;
+        }
+    }
+
+    public void EndingScene()
+    {
+        this.endingScene = true;
+        this.animator.SetTrigger("endingScene");
     }
 }

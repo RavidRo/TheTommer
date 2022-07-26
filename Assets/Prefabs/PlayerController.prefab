@@ -35,10 +35,10 @@ RectTransform:
   m_Father: {fileID: 1659235839}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 633.13, y: -715.38}
+  m_SizeDelta: {x: 1266.26, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &641505390
 CanvasRenderer:
@@ -137,10 +137,10 @@ RectTransform:
   m_Father: {fileID: 641505388}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 633.13, y: -80}
+  m_SizeDelta: {x: 1066.26, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &710460249
 CanvasRenderer:
@@ -276,7 +276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1205.3196, y: -265.9}
+  m_AnchoredPosition: {x: 1093.2, y: -219.2}
   m_SizeDelta: {x: 129.24, y: 44.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1099670871
@@ -373,8 +373,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1896030488}
-        m_TargetAssemblyTypeName: SpeachController, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DialogController, Assembly-CSharp
         m_MethodName: StartNextSentence
         m_Mode: 1
         m_Arguments:
@@ -700,12 +700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b9626cdfc97ae4b8fa164c6dd450e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingSpeed: 0.05
   speachText: {fileID: 710460248}
-  sentences:
-  - There is a party outside! I want to join them
   continueButton: {fileID: 1099670868}
-  audioSource: {fileID: 4436885716221487486}
 --- !u!82 &4436885716221487486
 AudioSource:
   m_ObjectHideFlags: 0
@@ -855,7 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54e6e6cc980a954e919165a3cd1cccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tommer: {fileID: 2361452824257032394}
+  Tommer: {fileID: 4009602006623450048}
 --- !u!114 &1199305911047155994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,7 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  freeze: 0
+  freeze: 1
 --- !u!114 &7739490267086380467
 MonoBehaviour:
   m_ObjectHideFlags: 0
