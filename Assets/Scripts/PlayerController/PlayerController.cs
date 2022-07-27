@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             this.possessing.transform.SetParent(null);
             this.possessing.GetComponent<Collider2D>().isTrigger = true;
             this.movementController.Unfreeze();
-            this.possessing.OnUnpossession();
+            this.possessing.OnPossessionGeneric();
             this.possessing = null;
             this.Tommer.gameObject.SetActive(true);
         }
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
             {
                 this.movementController.Freeze();
             }
-            this.possessing.GetComponent<IPossessable>().OnPossession();
+            this.possessing.GetComponent<IPossessable>().OnPossessionGeneric();
         }
     }
 

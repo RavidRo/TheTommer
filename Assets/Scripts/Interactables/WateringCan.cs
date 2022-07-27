@@ -9,14 +9,9 @@ public class WateringCan : IPossessable
     {
         this.canCollide = true;
         this.canMove = true;
+        this.canDie = true;
     }
 
-    public override void OnPossession(){
-        this.GetComponent<LightExposure>().enabled = true;
-    }
-    public override void OnUnpossession(){
-		this.GetComponent<LightExposure>().enabled = false;
-	}
     public override void Interact()
     {
         Debug.Log("water can interact");
