@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using interfaces;
 
-[RequireComponent(typeof(MovementController))]
 [RequireComponent(typeof(LightExposure))]
+[RequireComponent(typeof(MovementController))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private TommerController Tommer;
-    private IPossessable possessing;
+    [SerializeField] public TommerController Tommer;
+    public IPossessable possessing;
     private MovementController movementController;
     private LightExposure lightExposure;
 
