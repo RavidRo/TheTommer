@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Patroller : MonoBehaviour
 {
     // [SerializeField] Transform[] patrolPoints;
     [SerializeField] List<Transform> patrolPoints;
     [SerializeField] float moveSpeed = 0.2f;
-    [SerializeField] float closeEnough = 0.5f;
-    [SerializeField] float meanWaitingTime = 3f;
+    [SerializeField] float closeEnough = 1f;
+    [SerializeField] float meanWaitingTime = 2f;
     [SerializeField] float waitingTimeRandomVariation = 1f;
     [SerializeField] bool waiting = false;
     [SerializeField] GameObject alertSprite; 
@@ -17,23 +18,30 @@ public class Patroller : MonoBehaviour
     private float decisionTimeCount = 0;
     private float currentWaitingTime;
 
+    private Path path; 
+    private int currentWaypoint=0;
+    private bool reachedEndOfPath;
+    private Rigidbody2D rb;
+    private Seeker seeker;
+    
     void Start()
     {
         this.animator = this.GetComponent<Animator>();
+        this.seeker = this.GetComponent<Seeker>();
+        this.rb = this.GetComponent<Rigidbody2D>();
+        InvokeRepeating("UpdatePath", 0f, .5f);
     }
-
-    void GotoNextPoint()
-    {
-        // Returns if no points have been set up
-        if (this.patrolPoints.Count == 0)
-            return;
-
-        // Choose the next point in the array as the destination,
-        // cycling to the start if necessary.
-        this.destPoint = (this.destPoint + 1) % this.patrolPoints.Count;
+    void UpdatePath(){
+        if(this.seeker.IsDone())
+            this.seeker.StartPath(this.rb.position, this.patrolPoints[this.destPoint].position, OnPathComplete);
     }
-
-    void Update()
+    void OnPathComplete(Path p){
+        if(!p.error){
+            this.path=p;
+            this.currentWaypoint = 0;
+        }   
+    }
+    void FixedUpdate()
     {
         Vector2 currentPosition = this.gameObject.transform.position;
         Vector2 nextPoint = this.patrolPoints[this.destPoint].position;
@@ -62,6 +70,18 @@ public class Patroller : MonoBehaviour
             }
         }
     }
+    void GotoNextPoint()
+    {
+        // Returns if no points have been set up
+        if (this.patrolPoints.Count == 0)
+            return;
+
+        // Choose the next point in the array as the destination,
+        // cycling to the start if necessary.
+
+        // this.destPoint = (this.destPoint + 1) % this.patrolPoints.Count;
+        this.destPoint = (int)Random.Range(0, this.patrolPoints.Count);
+    }
 
     void Wait()
     {
@@ -73,18 +93,29 @@ public class Patroller : MonoBehaviour
 
     void Move(Vector2 currentPosition, Vector2 nextPoint)
     {
-        Vector2 direction = (nextPoint - currentPosition).normalized;
 
-        float xDir = direction.x;
-        float yDir = direction.y;
+        if(path == null)
+            return;
+        if(this.currentWaypoint >= path.vectorPath.Count){
+            reachedEndOfPath = true;
+            return;
+        }
+        else{
+            reachedEndOfPath = false;
+        }
+        Vector2 direction = ((Vector2)path.vectorPath[this.currentWaypoint] - rb.position).normalized;
+        Vector2 force = direction * Time.deltaTime * moveSpeed;
+        
+        this.gameObject.transform.position += new Vector3(force.x, force.y, 0);
 
-        Vector2 newPosition = direction * Time.deltaTime * moveSpeed;
-        this.gameObject.transform.position += new Vector3(newPosition.x, newPosition.y, 0);
-
+        float distance = Vector2.Distance(rb.position, path.vectorPath[this.currentWaypoint]);
+        if(distance < this.closeEnough){
+            this.currentWaypoint++;
+        }
         if (animator)
         {
-            animator.SetFloat("MoveX", xDir);
-            animator.SetFloat("MoveY", yDir);
+            animator.SetFloat("MoveX", direction.x);
+            animator.SetFloat("MoveY", direction.y);
         }
     }
 
@@ -94,6 +125,7 @@ public class Patroller : MonoBehaviour
         this.patrolPoints.Insert(0, g.transform);
         this.waiting=false;
         this.currentWaitingTime=0;
+        this.destPoint=0;
         StartCoroutine(this.alertSprite.GetComponent<AlertPopup>().onPopUp());
     }
 }
