@@ -126,14 +126,14 @@ public class LightExposure : MonoBehaviour
         return min;
     }
 
-    void OnTriggerEnter2D(Collider2D c) //change to 2d for 2d
+    void OnTriggerEnter2D(Collider2D c) 
     {
         if (!c.gameObject.CompareTag("LightExposure") || DeathController.inAnimation) return;
 
         this.lightSources.Add(new LightSource(c.gameObject, this.transform.position, this.warningDistance));
     }
 
-    void OnTriggerExit2D(Collider2D c) //change to 2d for 2d
+    void OnTriggerExit2D(Collider2D c) 
     {
         this.lightSources.RemoveAll(s => s.id == c.gameObject.GetInstanceID());
     }

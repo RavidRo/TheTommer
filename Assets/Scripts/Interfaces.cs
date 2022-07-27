@@ -11,9 +11,11 @@ namespace interfaces
         protected bool canDie = false;
 
         [SerializeField] private GameObject outline;
+        [SerializeField] private LoadingBar loadingBar;
 
         public bool CanMove { get => canMove; }
         public bool CanCollide { get => canCollide; }
+        public bool CanDie { get => canDie; }
 
         public virtual void Update()
         {
@@ -24,18 +26,32 @@ namespace interfaces
             }
         }
 
+        public void LoadPossesion()
+        {
+            this.loadingBar.gameObject.SetActive(true);
+            this.loadingBar.LoadBar();
+        }
+
+        public bool IsPossionComplete()
+        {
+            return this.loadingBar.IsLoaded();
+        }
+
+        public bool IsPossessing()
+        {
+            return this.loadingBar.isActiveAndEnabled && this.loadingBar.IsLoading();
+        }
+
+        public void CancelPossession()
+        {
+            this.loadingBar.Unload();
+            this.loadingBar.gameObject.SetActive(false);
+        }
+
         public void OnPossessionGeneric() {
-            if (this.canDie)
-            {
-                this.GetComponent<LightExposure>().enabled = true;
-            }
             this.OnPossession();
         }
         public void OnUnpossessionGeneric() {
-            if (this.canDie)
-            {
-                this.GetComponent<LightExposure>().enabled = false;
-            }
             this.OnUnpossession();
         }
 
