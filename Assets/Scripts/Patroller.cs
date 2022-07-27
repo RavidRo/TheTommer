@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Patroller : MonoBehaviour
 {
-    [SerializeField] Transform[] patrolPoints;
+    // [SerializeField] Transform[] patrolPoints;
+    [SerializeField] List<Transform> patrolPoints;
     [SerializeField] float moveSpeed = 0.2f;
     [SerializeField] float closeEnough = 0.5f;
     [SerializeField] float meanWaitingTime = 3f;
     [SerializeField] float waitingTimeRandomVariation = 1f;
     [SerializeField] bool waiting = false;
-
+    [SerializeField] GameObject alertSprite; 
     public Animator animator;
     private int destPoint = 0;
     private float decisionTimeCount = 0;
@@ -24,12 +25,12 @@ public class Patroller : MonoBehaviour
     void GotoNextPoint()
     {
         // Returns if no points have been set up
-        if (this.patrolPoints.Length == 0)
+        if (this.patrolPoints.Count == 0)
             return;
 
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
-        this.destPoint = (this.destPoint + 1) % this.patrolPoints.Length;
+        this.destPoint = (this.destPoint + 1) % this.patrolPoints.Count;
     }
 
     void Update()
@@ -85,5 +86,14 @@ public class Patroller : MonoBehaviour
             animator.SetFloat("MoveX", xDir);
             animator.SetFloat("MoveY", yDir);
         }
+    }
+
+    public void onSound(GameObject g){
+        Debug.Log("Pinged " + g.transform);
+        this.patrolPoints.Remove(g.transform);
+        this.patrolPoints.Insert(0, g.transform);
+        this.waiting=false;
+        this.currentWaitingTime=0;
+        StartCoroutine(this.alertSprite.GetComponent<AlertPopup>().onPopUp());
     }
 }
