@@ -9,6 +9,7 @@ public class DeathController : MonoBehaviour, IDeathSubscriber
     [SerializeField] PlayerController player;
     [SerializeField] float deathAnimationTime = 1.5f;
     [SerializeField] float spawnAnimationTime = 1f;
+    [SerializeField] AudioSource audioSource;
     private float animationTimerCount = 0;
     private Vector3 initialSpawn;
     private bool spawning = false;
@@ -59,6 +60,7 @@ public class DeathController : MonoBehaviour, IDeathSubscriber
     {
         this.player.unpossess();
         this.dead = true;
+        audioSource.Play();
         this.animator.SetTrigger("dead");
     }
 }

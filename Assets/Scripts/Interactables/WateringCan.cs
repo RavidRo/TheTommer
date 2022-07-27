@@ -2,31 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using interfaces;
-public class WateringCan : MonoBehaviour, IPossessable
+public class WateringCan : IPossessable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    public void Start()
+    {
+        this.canCollide = true;
+        this.canMove = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void onPossession(){
+    public override void OnPossession(){
         this.GetComponent<LightExposure>().enabled = true;
     }
-    public void onUnpossession(){
+    public override void OnUnpossession(){
 		this.GetComponent<LightExposure>().enabled = false;
 	}
-    public void movementAnimation(float x, float y)
-    {
-        // Debug.Log("Water can movement animation");
-    }
-    public void interact()
+    public override void Interact()
     {
         Debug.Log("water can interact");
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using interfaces;
-public class Piano : MonoBehaviour, IPossessable
+public class Piano : IPossessable
 {
 	[SerializeField] MovementController movementController;
   
@@ -16,27 +16,12 @@ public class Piano : MonoBehaviour, IPossessable
        if (soundEvent == null)
             soundEvent = new UnityEvent<GameObject>();
 		  this.audioSource = this.GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-	public void onPossession(){
-		movementController.Freeze();
+      
+		this.canCollide = false;
+		this.canMove = false;
 	}
 
-	public void onUnpossession(){
-		movementController.Unfreeze();
-	}
-
-    public void movementAnimation(float x, float y)
-    {
-        // Debug.Log("Water can movement animation");
-    }
-    public void interact()
+	public override void Interact()
     {
         this.soundEvent.Invoke(this.gameObject);
 		    this.audioSource.Play();

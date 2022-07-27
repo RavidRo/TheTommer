@@ -2,35 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using interfaces;
-public class TommerController : MonoBehaviour, IPossessable
-{
-    // public  Sprite
-    // Start is called before the first frame update
 
+[RequireComponent(typeof(Animator))]
+public class TommerController : IPossessable
+{
     private Animator animator;
-    private Rigidbody2D rigidBody;
+
+    private bool endingScene = false;
 
     void Start()
     {
-        this.rigidBody = this.GetComponent<Rigidbody2D>();
         this.animator = this.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-
-
-    public void interact()
-    {
-        Debug.Log("Tommer interact");
-    }
-    public void movementAnimation(float x, float y)
+    public override void MovementAnimation(float x, float y)
     {
         this.animator.SetFloat("xSpeed", x);
         this.animator.SetFloat("ySpeed", y);
     }
-    public void onPossession()
+
+    public void Update()
     {
+        if (this.endingScene)
+        {
+            this.transform.parent.transform.position = this.transform.position;
+        }
     }
-    public void onUnpossession(){
-	}
+
+    public void EndingScene()
+    {
+        this.endingScene = true;
+        this.animator.SetTrigger("endingScene");
+    }
 }
