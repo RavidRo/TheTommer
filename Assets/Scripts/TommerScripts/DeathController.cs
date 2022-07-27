@@ -58,7 +58,7 @@ public class DeathController : MonoBehaviour, IDeathSubscriber
 
     public void OnDeath()
     {
-        this.player.unpossess();
+        this.player.Unpossess();
         this.dead = true;
         audioSource.Play();
         this.animator.SetTrigger("dead");

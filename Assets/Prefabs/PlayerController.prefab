@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 641505390}
   - component: {fileID: 641505389}
   - component: {fileID: 641505391}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: ImageSpeachBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 710460247}
   - component: {fileID: 710460249}
   - component: {fileID: 710460248}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Speach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 1099670871}
   - component: {fileID: 1099670870}
   - component: {fileID: 1099670869}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1659235839}
   - component: {fileID: 1659235840}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: SpeachContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 1877767568}
   - component: {fileID: 1877767570}
   - component: {fileID: 1877767569}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 1896030484}
   - component: {fileID: 1896030488}
   - component: {fileID: 4436885716221487486}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: SpeachCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,9 +813,9 @@ GameObject:
   - component: {fileID: 2361452825398527414}
   - component: {fileID: 2361452825398527423}
   - component: {fileID: 6694329451682017088}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -852,6 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tommer: {fileID: 4009602006623450048}
+  possessing: {fileID: 0}
 --- !u!114 &1199305911047155994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  freeze: 1
+  freeze: 0
 --- !u!114 &7739490267086380467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,7 +929,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0bd05763df902854a80475577a26666a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1024,9 +1025,8 @@ GameObject:
   - component: {fileID: 5045746640903232301}
   - component: {fileID: 559101352830828881}
   - component: {fileID: 4146166013203763461}
-  - component: {fileID: 8778511826041280745}
   - component: {fileID: 4009602006623450048}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Tommer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,24 +1136,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8778511826041280745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2361452824257032394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa2567eecaeb36498520d5a31e57241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathController: {fileID: 2361452825398527423}
-  warningIcon: {fileID: 3387593230672432132}
-  invincible: 0
-  warningColorNear: {r: 1, g: 0, b: 0, a: 1}
-  warningColorFar: {r: 0.9528302, g: 0.9202407, b: 0.5438323, a: 1}
-  warningDistance: 0.5
 --- !u!114 &4009602006623450048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1166,6 +1148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a55f7e487c6074cb9810f226cda406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outline: {fileID: 0}
+  loadingBar: {fileID: 0}
 --- !u!1 &3387593230672432132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,7 +1160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3478576841399972613}
   - component: {fileID: 5552509028039918467}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ExposureWarning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1260,7 +1244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 130521994918439983}
   - component: {fileID: 3086568647780722435}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ClickSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}

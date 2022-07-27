@@ -21,8 +21,9 @@ public class TommerController : IPossessable
         this.animator.SetFloat("ySpeed", y);
     }
 
-    public void Update()
+    public override void Update()
     {
+        base.Update();
         if (this.endingScene)
         {
             this.transform.parent.transform.position = this.transform.position;

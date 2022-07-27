@@ -6,7 +6,7 @@ using interfaces;
 public class Piano : IPossessable
 {
 	[SerializeField] MovementController movementController;
-  
+    
   public UnityEvent<GameObject> soundEvent;
 	private AudioSource audioSource;
 	
@@ -24,6 +24,6 @@ public class Piano : IPossessable
 	public override void Interact()
     {
         this.soundEvent.Invoke(this.gameObject);
-		    this.audioSource.Play();
+		this.audioSource.Play();
     }
 }
