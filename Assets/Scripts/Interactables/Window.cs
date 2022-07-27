@@ -12,8 +12,6 @@ public class Window : IPossessable
 
     private bool open = false;
 
-    [SerializeField] MovementController movementController;
-
     void Start()
     {
         this.spriteRenderer = this.GetComponent<SpriteRenderer>();
