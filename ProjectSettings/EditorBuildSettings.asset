@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 2ad74db1cdb1cba4c9658d1c0a0d155f
+  - enabled: 1
+    path: Assets/Scenes/Mansion Copy.unity
+    guid: 4920d365a4c28d445aafe5c71c0f3f13
   m_configObjects: {}
