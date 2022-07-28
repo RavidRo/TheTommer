@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using interfaces;
+
+[RequireComponent(typeof(AudioSource))]
 public class Piano : IPossessable
 {
 	[SerializeField] MovementController movementController;
     
-  public UnityEvent<GameObject> soundEvent;
+    public UnityEvent<GameObject> soundEvent;
 	private AudioSource audioSource;
 	
     // Start is called before the first frame update
@@ -15,8 +17,7 @@ public class Piano : IPossessable
     {
        if (soundEvent == null)
             soundEvent = new UnityEvent<GameObject>();
-		  this.audioSource = this.GetComponent<AudioSource>();
-      
+		this.audioSource = this.GetComponent<AudioSource>();
 		this.canCollide = false;
 		this.canMove = false;
 	}

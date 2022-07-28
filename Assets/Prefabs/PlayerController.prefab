@@ -813,6 +813,7 @@ GameObject:
   - component: {fileID: 2361452825398527414}
   - component: {fileID: 2361452825398527423}
   - component: {fileID: 6694329451682017088}
+  - component: {fileID: 2361452825398527433}
   m_Layer: 7
   m_Name: PlayerController
   m_TagString: Player
@@ -1013,6 +1014,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2361452825398527433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800117040221024185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5bb8986ad275ab459a24ae1f6a4a71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3813815431443424366}
+  deathController: {fileID: 2361452825398527423}
+  warningIcon: {fileID: 3387593230672432132}
+  invincible: 0
+  warningColorNear: {r: 1, g: 0, b: 0, a: 1}
+  warningColorFar: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  warningDistance: 0.5
 --- !u!1 &2361452824257032394
 GameObject:
   m_ObjectHideFlags: 0
