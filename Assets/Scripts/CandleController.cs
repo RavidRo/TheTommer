@@ -5,9 +5,10 @@ using UnityEngine;
 public class CandleController : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    public Sprite on;
-    public Sprite off;
-    private bool turnedOn; 
+    public Sprite lit;
+    public Sprite unlit;
+    private bool isLit; 
+    [SerializeField] private GameObject candleLight;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,17 +16,8 @@ public class CandleController : MonoBehaviour
         this.spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void onWindowEvent(bool isOpen){
         
     }
 
-    void action(){
-        if(this.turnedOn)
-            this.spriteRenderer.sprite = this.on;
-        else
-            this.spriteRenderer.sprite = this.off;
-        this.turnedOn = !this.turnedOn;
-    }
 }
