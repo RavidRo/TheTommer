@@ -9,6 +9,7 @@ namespace interfaces
         protected bool canMove = false;
         protected bool canCollide = false;
         protected bool canDie = false;
+        protected bool isPossessed = false;
 
         [SerializeField] private GameObject outline;
         [SerializeField] private LoadingBar loadingBar;
@@ -49,9 +50,11 @@ namespace interfaces
         }
 
         public void OnPossessionGeneric() {
+            this.isPossessed = true;
             this.OnPossession();
         }
         public void OnUnpossessionGeneric() {
+            this.isPossessed = false;
             this.OnUnpossession();
         }
 
