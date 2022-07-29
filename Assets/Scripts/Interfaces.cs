@@ -62,7 +62,12 @@ namespace interfaces
 
 
     }
+    public interface ILightable
+    {
+        void onWind();
 
+        IEnumerator onTurnOn();
+    }
     public interface IDeathSubscriber
     {
         void OnDeath();

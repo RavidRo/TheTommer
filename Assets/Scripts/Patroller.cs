@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using interfaces; 
 
-public class Patroller : MonoBehaviour
+public class Patroller : MonoBehaviour, ILightable
 {
     // [SerializeField] Transform[] patrolPoints;
     [SerializeField] List<Transform> patrolPoints;
@@ -13,6 +14,8 @@ public class Patroller : MonoBehaviour
     [SerializeField] float waitingTimeRandomVariation = 1f;
     [SerializeField] bool waiting = false;
     [SerializeField] GameObject alertSprite; 
+    [SerializeField] GameObject candleLight;
+    [SerializeField] float relightCandleTime = 1.5f; 
     public Animator animator;
     private int destPoint = 0;
     private float decisionTimeCount = 0;
@@ -127,5 +130,15 @@ public class Patroller : MonoBehaviour
         this.currentWaitingTime=0;
         this.destPoint=0;
         StartCoroutine(this.alertSprite.GetComponent<AlertPopup>().onPopUp());
+    }
+
+    public void onWind(){
+        this.candleLight.SetActive(false);
+        StartCoroutine(onTurnOn());
+    }
+
+    public IEnumerator onTurnOn(){
+        yield return new WaitForSeconds(this.relightCandleTime);
+        this.candleLight.SetActive(true);
     }
 }

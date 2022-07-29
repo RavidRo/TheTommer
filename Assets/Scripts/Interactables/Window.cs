@@ -11,7 +11,11 @@ public class Window : IPossessable
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite spriteClosed;
     [SerializeField] private Sprite spriteOpen;
-    public UnityEvent<bool> windowEvent;
+
+    [SerializeField] private float width = 2.5f;
+    [SerializeField] private float length = 5f;
+    [SerializeField] private Collider2D windBoxCollider; 
+    // public UnityEvent<bool> windowEvent;
 
     private bool open = false;
 
@@ -28,9 +32,20 @@ public class Window : IPossessable
     {
         this.open = !this.open;
         UpdateSprite();
-        this.windowEvent.Invoke(this.open);
+        // this.windowEvent.Invoke(this.open);
+        if(this.open)
+            turnOffLights();
+             
     }
-
+    public void turnOffLights(){
+        GameObject[] gameObjects =  GameObject.FindGameObjectsWithTag("LightExposure");
+        foreach (var g in gameObjects)
+        {   
+            if(this.windBoxCollider.OverlapPoint(g.transform.position)){
+                g.transform.parent.gameObject.GetComponent<ILightable>().onWind();
+            }
+        }
+    }
     private void UpdateSprite()
     {
         this.spriteRenderer.sprite = this.open ? this.spriteOpen : this.spriteClosed;
