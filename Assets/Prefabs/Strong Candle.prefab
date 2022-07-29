@@ -230,3 +230,4 @@ MonoBehaviour:
   lit: {fileID: 21300000, guid: d3905d26102730546852c2e351cd060d, type: 2}
   unlit: {fileID: 21300000, guid: 44d6c670c2ccb7b459103d39d66f57f8, type: 2}
   candleLight: {fileID: 4686913297947477728}
+  relightCandleTime: 1.5
