@@ -16,6 +16,7 @@ public class Patroller : MonoBehaviour, ILightable
     [SerializeField] GameObject alertSprite; 
     [SerializeField] GameObject candleLight;
     [SerializeField] float relightCandleTime = 1.5f; 
+    [SerializeField] float hearingDistance = 10f;
     public Animator animator;
     private int destPoint = 0;
     private float decisionTimeCount = 0;
@@ -123,13 +124,14 @@ public class Patroller : MonoBehaviour, ILightable
     }
 
     public void onSound(GameObject g){
-        Debug.Log("Pinged " + g.transform);
-        this.patrolPoints.Remove(g.transform);
-        this.patrolPoints.Insert(0, g.transform);
-        this.waiting=false;
-        this.currentWaitingTime=0;
-        this.destPoint=0;
-        StartCoroutine(this.alertSprite.GetComponent<AlertPopup>().onPopUp());
+        if(Vector2.Distance(this.transform.position, g.transform.position) < hearingDistance){
+            this.patrolPoints.Remove(g.transform);
+            this.patrolPoints.Insert(0, g.transform);
+            this.waiting=false;
+            this.currentWaitingTime=0;
+            this.destPoint=0;
+            StartCoroutine(this.alertSprite.GetComponent<AlertPopup>().onPopUp());
+            }
     }
 
     public void onWind(){
