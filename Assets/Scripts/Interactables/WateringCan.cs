@@ -8,6 +8,7 @@ public class WateringCan : IPossessable
     [SerializeField] private MovementController player;
     [SerializeField] private float wallWidth = 1.5f;
     [SerializeField] private float wallingSpeed = 1f;
+    [SerializeField] private GameObject holesIndications;
 
     private bool walling = false;
     private float distanceCounter = 0;
@@ -51,6 +52,8 @@ public class WateringCan : IPossessable
     public override void Update()
     {
         base.Update();
+
+        this.holesIndications.SetActive(this.isPossessed);
 
         if (walling)
         {
