@@ -103,14 +103,9 @@ public class Patroller : MonoBehaviour, ILightable
 
         if(path == null)
             return;
-        if (this.currentWaypoint >= path.vectorPath.Count)
-        {
-            //reachedEndOfPath = true;
-            return;
+        if(this.currentWaypoint >= path.vectorPath.Count){
+           return;
         }
-        //else{
-        //    reachedEndOfPath = false;
-        //}
         Vector2 direction = ((Vector2)path.vectorPath[this.currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * Time.deltaTime * moveSpeed;
         

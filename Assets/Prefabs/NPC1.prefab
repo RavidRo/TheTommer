@@ -374,10 +374,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   moveSpeed: 0.7
-  closeEnough: 0.2
-  meanWaitingTime: 3
+  closeEnough: 0.4
+  meanWaitingTime: 1.5
   waitingTimeRandomVariation: 1
   waiting: 0
   alertSprite: {fileID: 1680369680}
