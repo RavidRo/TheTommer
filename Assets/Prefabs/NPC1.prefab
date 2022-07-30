@@ -398,14 +398,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolPoints:
   - {fileID: 0}
-  moveSpeed: 0.7
-  closeEnough: 0.5
+  - {fileID: 0}
+  - {fileID: 0}
+  moveSpeed: 0.5
+  closeEnough: 0.2
   meanWaitingTime: 3
   waitingTimeRandomVariation: 1
   waiting: 0
   alertSprite: {fileID: 1680369680}
   candleLight: {fileID: 552729769}
   relightCandleTime: 1.5
+  hearingDistance: 10
   animator: {fileID: 4895925359620950599}
 --- !u!114 &1845078798
 MonoBehaviour:

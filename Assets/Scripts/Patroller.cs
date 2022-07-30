@@ -6,7 +6,6 @@ using interfaces;
 
 public class Patroller : MonoBehaviour, ILightable
 {
-    // [SerializeField] Transform[] patrolPoints;
     [SerializeField] List<Transform> patrolPoints;
     [SerializeField] float moveSpeed = 0.2f;
     [SerializeField] float closeEnough = 1f;
@@ -17,6 +16,7 @@ public class Patroller : MonoBehaviour, ILightable
     [SerializeField] GameObject candleLight;
     [SerializeField] float relightCandleTime = 1.5f; 
     [SerializeField] float hearingDistance = 10f;
+
     public Animator animator;
     private int destPoint = 0;
     private float decisionTimeCount = 0;
@@ -24,7 +24,7 @@ public class Patroller : MonoBehaviour, ILightable
 
     private Path path; 
     private int currentWaypoint=0;
-    private bool reachedEndOfPath;
+    //private bool reachedEndOfPath;
     private Rigidbody2D rb;
     private Seeker seeker;
     
@@ -47,6 +47,10 @@ public class Patroller : MonoBehaviour, ILightable
     }
     void FixedUpdate()
     {
+        // Returns if no points have been set up
+        if (this.patrolPoints.Count == 0)
+            return;
+
         Vector2 currentPosition = this.gameObject.transform.position;
         Vector2 nextPoint = this.patrolPoints[this.destPoint].position;
 
@@ -76,10 +80,6 @@ public class Patroller : MonoBehaviour, ILightable
     }
     void GotoNextPoint()
     {
-        // Returns if no points have been set up
-        if (this.patrolPoints.Count == 0)
-            return;
-
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
 
@@ -100,13 +100,13 @@ public class Patroller : MonoBehaviour, ILightable
 
         if(path == null)
             return;
-        if(this.currentWaypoint >= path.vectorPath.Count){
-            reachedEndOfPath = true;
-            return;
-        }
-        else{
-            reachedEndOfPath = false;
-        }
+        //if(this.currentWaypoint >= path.vectorPath.Count){
+        //    reachedEndOfPath = true;
+        //    return;
+        //}
+        //else{
+        //    reachedEndOfPath = false;
+        //}
         Vector2 direction = ((Vector2)path.vectorPath[this.currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * Time.deltaTime * moveSpeed;
         
