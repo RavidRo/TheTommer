@@ -381,7 +381,7 @@ MonoBehaviour:
   waiting: 0
   alertSprite: {fileID: 1680369680}
   candleLight: {fileID: 552729769}
-  relightCandleTime: 50
+  relightCandleTime: 5
   hearingDistance: 10
   animator: {fileID: 4895925359620950599}
 --- !u!114 &1845078798

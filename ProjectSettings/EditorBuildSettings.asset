@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Mansion 1.unity
-    guid: 6ce937005c271ed47ae1b0f8f3ba8755
+    path: Assets/Scenes/Level 0.unity
+    guid: 1e8fc1eb48be0ce4bb4f522931dde2fd
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: 2ad74db1cdb1cba4c9658d1c0a0d155f
+    path: Assets/Scenes/Level 2.unity
+    guid: 4fc7d1dbea917b14d9e36d6df74bdfba
   - enabled: 1
-    path: Assets/Scenes/Mansion Copy.unity
-    guid: 4920d365a4c28d445aafe5c71c0f3f13
+    path: Assets/Scenes/Level 3.unity
+    guid: 3460adade28df4e4d8b237a9666b916c
   - enabled: 1
     path: Assets/Scenes/Ending.unity
     guid: 3104c0817ac4ecc42ae8f3818c97d9c1
