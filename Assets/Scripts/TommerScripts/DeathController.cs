@@ -43,7 +43,7 @@ public class DeathController : MonoBehaviour, IDeathSubscriber
             this.animationTimerCount += Time.deltaTime;
             if(this.animationTimerCount >= this.finalDeadAnimationTime){
                 lives = INITIAL_LIVES;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene("Level 2");
             }
         }
         if (this.dead)
