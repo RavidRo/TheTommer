@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7467807652167057473}
-  lit: {fileID: 21300000, guid: d3905d26102730546852c2e351cd060d, type: 2}
-  unlit: {fileID: 21300000, guid: 44d6c670c2ccb7b459103d39d66f57f8, type: 2}
+  lit: {fileID: -1563688980, guid: aa65aa0cf70fdab429cfc244f34f4db8, type: 3}
+  unlit: {fileID: 1653794923, guid: aa65aa0cf70fdab429cfc244f34f4db8, type: 3}
   candleLight: {fileID: 4686913297947477728}
+  relightCandleTime: 1.5

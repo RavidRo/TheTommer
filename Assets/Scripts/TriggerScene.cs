@@ -12,7 +12,7 @@ public class TriggerScene : MonoBehaviour
     private float windowWaitTimeCount = 0;
     private bool waitTimeStarted = false;
 
-    [SerializeField] GameObject speachBubble;
+    [SerializeField] DialogController speachBubble;
 
     private bool triggered = false;
 
@@ -54,7 +54,7 @@ public class TriggerScene : MonoBehaviour
         mainCamera.trackedObject = player.transform;
 
         // Trigger speach bubble
-        speachBubble.SetActive(true);
+        speachBubble.StartNextDialog();
 
         // Unfreeze player
         player.Unfreeze();

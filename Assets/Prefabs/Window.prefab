@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingLayerID: -1915261281
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 045f06abde944a94e872da587654f495, type: 2}
+  m_Sprite: {fileID: 1357334559, guid: aa65aa0cf70fdab429cfc244f34f4db8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -188,13 +188,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outline: {fileID: 6392564887317772178}
   loadingBar: {fileID: 6733330815933225673}
-  spriteClosed: {fileID: 21300000, guid: 045f06abde944a94e872da587654f495, type: 2}
-  spriteOpen: {fileID: 21300000, guid: f3d6812076da09f4cb68729bef53c73c, type: 2}
-  width: 2.5
-  length: 5
-  windBoxCollider: {fileID: 1908983840}
+  spriteClosed: {fileID: 1357334559, guid: aa65aa0cf70fdab429cfc244f34f4db8, type: 3}
+  spriteOpen: {fileID: -145203369, guid: aa65aa0cf70fdab429cfc244f34f4db8, type: 3}
   windowOpenClip: {fileID: 8300000, guid: 98ce744033af99149a66cde5a8a885d8, type: 3}
   windowCloseClip: {fileID: 8300000, guid: bfa344e679d7f8745bcbf07b27fe7949, type: 3}
+  windBoxCollider: {fileID: 1908983840}
 --- !u!82 &3880079847207813946
 AudioSource:
   m_ObjectHideFlags: 0
@@ -372,7 +370,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &5824420982141403475
