@@ -18,7 +18,6 @@ public class Window : IPossessable
     [SerializeField] private AudioClip windowCloseClip;
 
     [SerializeField] private float width = 2.5f;
-    [SerializeField] private float length = 5f;
     [SerializeField] private Collider2D windBoxCollider; 
 
     private bool open = false;

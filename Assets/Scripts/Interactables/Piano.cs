@@ -7,8 +7,6 @@ using interfaces;
 [RequireComponent(typeof(AudioSource))]
 public class Piano : IPossessable
 {
-	[SerializeField] MovementController movementController;
-    
     public UnityEvent<GameObject> soundEvent;
 	private AudioSource audioSource;
 	
