@@ -35,16 +35,19 @@ public class Patroller : MonoBehaviour, ILightable
         this.rb = this.GetComponent<Rigidbody2D>();
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
+
     void UpdatePath(){
         if(this.seeker.IsDone())
             this.seeker.StartPath(this.rb.position, this.patrolPoints[this.destPoint].position, OnPathComplete);
     }
+
     void OnPathComplete(Path p){
         if(!p.error){
             this.path=p;
             this.currentWaypoint = 0;
         }   
     }
+    
     void FixedUpdate()
     {
         // Returns if no points have been set up
@@ -100,10 +103,11 @@ public class Patroller : MonoBehaviour, ILightable
 
         if(path == null)
             return;
-        //if(this.currentWaypoint >= path.vectorPath.Count){
-        //    reachedEndOfPath = true;
-        //    return;
-        //}
+        if (this.currentWaypoint >= path.vectorPath.Count)
+        {
+            //reachedEndOfPath = true;
+            return;
+        }
         //else{
         //    reachedEndOfPath = false;
         //}
