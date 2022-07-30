@@ -43,7 +43,8 @@ public class DeathController : MonoBehaviour, IDeathSubscriber
             this.animationTimerCount += Time.deltaTime;
             if(this.animationTimerCount >= this.finalDeadAnimationTime){
                 lives = INITIAL_LIVES;
-                SceneManager.LoadScene("Level 2");
+                //SceneManager.LoadScene("Level 1");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
         if (this.dead)
@@ -84,6 +85,7 @@ public class DeathController : MonoBehaviour, IDeathSubscriber
             this.audioSourceFinalDeath.Play();
             this.finalDead = true;
             if(this.UIDeathAnimator != null){
+                UIDeathAnimator.gameObject.SetActive(true);
                 UIDeathAnimator.SetTrigger("died");
             }
 

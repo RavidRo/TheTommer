@@ -12,21 +12,28 @@ public class DialogController : MonoBehaviour
         public SpeachController speachController;
     }
 
+    [System.Serializable]
+    public struct Dialog
+    {
+        public string name;
+        public Sentence[] sentences;
+    }
+
     [SerializeField] private float typingSpeed = 0.05f;
-    [SerializeField] private Sentence[] sentences;
+    [SerializeField] private Dialog[] dialogs;
 
     private AudioSource audioSource;
     private int sentenceIndex = 0;
+    private int dialogIndex = -1;
 
     void Start()
     {
         this.audioSource = this.GetComponent<AudioSource>();
-        StartNextSentence();
     }
 
     private IEnumerator TypeSentence()
     {
-        Sentence sentence = sentences[sentenceIndex];
+        Sentence sentence = dialogs[dialogIndex].sentences[sentenceIndex];
         audioSource.Play();
         sentence.speachController.gameObject.SetActive(true);
         sentence.speachController.startWriting();
@@ -39,16 +46,23 @@ public class DialogController : MonoBehaviour
         sentence.speachController.stopWriting();
     }
 
+    public void StartNextDialog()
+    {
+        dialogIndex++;
+        sentenceIndex = 0;
+        StartNextSentence();
+    }
+
     public void StartNextSentence()
     {
-        if (sentenceIndex <= sentences.Length && sentenceIndex > 0)
+        if (sentenceIndex <= dialogs[dialogIndex].sentences.Length && sentenceIndex > 0)
         {
             // Disable last sentence
-            Sentence sentence = sentences[sentenceIndex - 1];
+            Sentence sentence = dialogs[dialogIndex].sentences[sentenceIndex - 1];
             sentence.speachController.gameObject.SetActive(false);
         }
 
-        if (sentenceIndex < sentences.Length)
+        if (sentenceIndex < dialogs[dialogIndex].sentences.Length)
         {
             StartCoroutine(TypeSentence());
             sentenceIndex++;
