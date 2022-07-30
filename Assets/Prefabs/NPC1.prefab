@@ -238,9 +238,9 @@ GameObject:
   - component: {fileID: 4895925359620950584}
   - component: {fileID: 4895925359620950599}
   - component: {fileID: 455663378}
-  - component: {fileID: 455663377}
   - component: {fileID: 2232165802838615246}
   - component: {fileID: 1845078798}
+  - component: {fileID: 1369264615}
   m_Layer: 2
   m_Name: NPC1
   m_TagString: Untagged
@@ -358,32 +358,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &455663377
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4895925359620950598}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.00000023841858, y: -0.06420112}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.743196, y: 0.87159777}
-  m_EdgeRadius: 0
 --- !u!114 &2232165802838615246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +381,7 @@ MonoBehaviour:
   waiting: 0
   alertSprite: {fileID: 1680369680}
   candleLight: {fileID: 552729769}
-  relightCandleTime: 1.5
+  relightCandleTime: 50
   hearingDistance: 10
   animator: {fileID: 4895925359620950599}
 --- !u!114 &1845078798
@@ -438,3 +412,19 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!58 &1369264615
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895925359620950598}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
