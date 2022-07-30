@@ -299,7 +299,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &395886217
+--- !u!43 &371106720
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23879,6 +23879,14 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 9.37
       objectReference: {fileID: 0}
+    - target: {fileID: 2305704616249618219, guid: 0885b2ab9cee1ad438619d051384ee65, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1357334559, guid: aa65aa0cf70fdab429cfc244f34f4db8, type: 3}
+    - target: {fileID: 2305704616249618219, guid: 0885b2ab9cee1ad438619d051384ee65, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3776833842003016631, guid: 0885b2ab9cee1ad438619d051384ee65, type: 3}
       propertyPath: m_Name
       value: Window
@@ -28861,8 +28869,8 @@ MonoBehaviour:
   - {x: 6, y: 4, z: 0}
   - {x: 10, y: 4, z: 0}
   m_ShapePathHash: 609182447
-  m_Mesh: {fileID: 395886217}
-  m_InstanceId: 136514
+  m_Mesh: {fileID: 371106720}
+  m_InstanceId: 37588
 --- !u!1 &1829187696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387593230672432132, guid: 5528daf32b70ec54aa1b91a1971a5ef1, type: 3}
